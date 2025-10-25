@@ -25,6 +25,21 @@ pipeline
                 sh "mvn clean package"
                 echo "Hello $FIRSTNAME ${params.LASTNAME}"
             }
+        }
+
+        stage('test'){
+            parallel{
+                stage('testA'){
+                    steps{
+                        echo "This is test A"
+                    }
+                }
+                stage("testB"){
+                    steps{
+                        echo "This is test B"
+                    }
+                }
+            }
 
             post {
                 success {
