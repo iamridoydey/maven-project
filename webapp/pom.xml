@@ -20,11 +20,39 @@
 
     <plugins>
       <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-war-plugin</artifactId>
+        <version>3.3.2</version>
+      </plugin>
+
+      <!-- Explicitly declare the site plugin here to override any inherited
+           configuration that incorrectly places reportPlugins inside its <configuration>.
+           Keep the configuration empty (or only include supported settings) so
+           reportPlugins come from <reporting> below. -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-site-plugin</artifactId>
+        <version>3.12.1</version>
+      </plugin>
+
+      <plugin>
         <groupId>org.eclipse.jetty</groupId>
         <artifactId>jetty-maven-plugin</artifactId>
       </plugin>
     </plugins>
   </build>
+
+  <reporting>
+    <plugins>
+      <!-- Move reporting plugin declarations here instead of using reportPlugins
+           inside maven-site-plugin configuration. Add specific report plugins as needed. -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-project-info-reports-plugin</artifactId>
+        <version>3.4.1</version>
+      </plugin>
+    </plugins>
+  </reporting>
 
   <dependencies>
     <dependency>
