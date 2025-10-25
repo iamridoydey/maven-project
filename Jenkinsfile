@@ -7,6 +7,7 @@ pipeline
     tools {
         maven 'myMaven'
         git 'Default'
+        jdk 'openJDK'
     }
 
     stages{
