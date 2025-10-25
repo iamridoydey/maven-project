@@ -12,14 +12,14 @@ pipeline
     stages{
         stage("build"){
             steps {
-                echo "mvn clean package"
+                sh "mvn clean package"
             }
         }
     }
 
     post {
         success {
-            archiveArtifacts artifacts: '**/target/*.war'
+            archiveArtifacts artifacts: '**/*.war'
         }
     }
 
