@@ -25,15 +25,12 @@ pipeline
                 sh "mvn clean package"
                 echo "Hello $FIRSTNAME ${params.LASTNAME}"
             }
-        }
 
-        post {
-            success {
-                archiveArtifacts artifacts: '**/*.war'
+            post {
+                success {
+                    archiveArtifacts artifacts: '**/*.war'
+                }
             }
         }
     }
-
-    
-
 }
